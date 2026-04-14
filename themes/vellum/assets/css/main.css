@@ -1,0 +1,39 @@
+:root {
+  --bs-primary: #209CEE;
+  --bs-primary-rgb: 32, 156, 238;
+  --bs-dark: #0b1a2e;
+  --bs-dark-rgb: 11, 26, 46;
+  --bs-link-color: #209CEE;
+  --bs-link-hover-color: #0b7dc4;
+  --bs-body-font-family: Georgia, "Times New Roman", serif;
+  --bs-body-font-size: 1.05rem;
+  --font-display: "Leckerli One", cursive;
+}
+
+.brand a {
+  font-family: var(--font-display);
+  text-shadow: 0 2px 12px rgba(32, 156, 238, 0.35);
+  transition: color 0.2s;
+}
+
+.brand a:hover {
+  color: var(--bs-primary-rgb);
+} 
+
+.article-body {
+  font-size: 1.08rem;
+  line-height: 1.72;
+  max-width: 42em;
+}
+
+.article-body > p {
+  margin: 1.15em 0;
+}
+
+.article-body h2,
+.article-body h3 {
+  position: relative;
+  color: var(--text);
+  line-height: 1.25;
+  margin: 2.3rem 0 0.9rem;
+}

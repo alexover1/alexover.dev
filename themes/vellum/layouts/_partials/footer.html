@@ -1,0 +1,10 @@
+<footer class="bg-dark text-white-50 mt-auto small">
+  <div class="container d-flex justify-content-between flex-wrap gap-2 py-3">
+    <span>&copy; {{ now.Year }} {{ .Site.Title }}</span>
+    <span>
+      {{ with .Site.Params.github }}<a class="link-light link-underline-opacity-0" href="{{ . }}">github</a>{{ end }}
+      ·
+      <a class="link-light link-underline-opacity-0" href="{{ "/index.xml" | relURL }}">rss</a>
+    </span>
+  </div>
+</footer>

@@ -1,0 +1,29 @@
+baseUrl: https://alexover.dev
+locale: en-us
+title: alexover.dev
+theme: vellum
+enableGitInfo: true
+
+params:
+  tagline: programmer · game designer · writer · Christian
+  intro: Writing about design, security, games, and the questions underneath the code I ship.
+  github: https://github.com/alexover1
+  now:
+    building: a puzzle game in C
+    reading: The Purpose Driven Life · Rick Warren
+    thinking: what makes "the most reusable code"
+
+menu:
+  main:
+    - { name: home, url: /, weight: 1 }
+    - { name: articles, url: /articles/, weight: 2 }
+    - { name: notes, url: /notes/, weight: 3 }
+    - { name: tags, url: /tags/, weight: 4 }
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3

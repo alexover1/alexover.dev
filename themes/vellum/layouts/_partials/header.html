@@ -1,0 +1,15 @@
+<header class="bg-dark text-white py-4 mb-4">
+  <div class="container">
+    {{ if .IsHome }}
+      <h1 class="brand display-5 mb-1"><a href="{{ "/" | relURL }}" class="text-white text-decoration-none">{{ .Site.Title }}</a></h1>
+      {{ with .Site.Params.tagline }}<p class="text-white-50 small mb-3">{{ . }}</p>{{ end }}
+    {{ else }}
+      <p class="brand fs-4 mb-2"><a href="{{ "/" | relURL }}" class="text-white text-decoration-none">{{ .Site.Title }}</a></p>
+    {{ end }}
+    <nav class="nav small">
+      {{ range .Site.Menus.main }}
+        <a class="nav-link text-white-50 px-2 py-1" href="{{ .URL | relURL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>

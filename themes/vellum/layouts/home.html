@@ -1,0 +1,33 @@
+{{ define "main" }}
+  {{ with .Site.Params.intro }}
+    <div class="alert alert-primary border-0 border-start border-4 rounded-0 py-3">{{ . }}</div>
+  {{ end }}
+
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <h2 class="text-uppercase text-body-secondary small fw-bold mb-3">Recent Posts</h2>
+      {{ $posts := where .Site.RegularPages "Section" "in" (slice "posts" "articles") }}
+      {{ range $i, $p := $posts | first 5 }}
+        {{ partial "post-preview.html" (dict "page" $p "featured" (eq $i 0)) }}
+      {{ end }}
+    </div>
+
+    <div class="col-lg-4">
+      {{ with .Site.Params.now }}
+        <aside class="card bg-dark text-white sticky-lg-top" style="top: 1rem">
+          <div class="card-body">
+            <h3 class="text-uppercase text-white-50 small fw-bold mb-3">Currently</h3>
+            <dl class="mb-0">
+              <dt class="text-primary text-uppercase small fw-normal">Building</dt>
+              <dd class="mb-2">{{ .building }}</dd>
+              <dt class="text-primary text-uppercase small fw-normal">Reading</dt>
+              <dd class="mb-2">{{ .reading }}</dd>
+              <dt class="text-primary text-uppercase small fw-normal">Thinking About</dt>
+              <dd class="mb-2">{{ .thinking }}</dd>
+            </dl>
+          </div>
+        </aside>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}
