@@ -65,4 +65,4 @@ So, that brings us to the end! The point of security isn't to put a padlock on
 every drawer in your house. The point is to think deliberately about which
 resources live at which layer and design your architecture around that.
 
-[^1]: https://www.silvaconsultants.com/concentric-circles-of-protection
+[^1]: Source: https://www.silvaconsultants.com/concentric-circles-of-protection

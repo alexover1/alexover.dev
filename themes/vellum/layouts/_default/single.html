@@ -3,19 +3,19 @@
     {{ if .TableOfContents }}
     <aside class="col-lg-3 order-lg-1 order-2 mb-4">
       <nav class="sticky-lg-top small border-start border-2 py-1 px-3" style="top: 1rem">
-        <p class="text-uppercase text-body-secondary small fw-light mb-2" style="letter-spacing: 1.15px">Contents</p>
+        <p class="text-uppercase text-body-secondary small fw-light mb-3" style="letter-spacing: 1.15px">Contents</p>
         {{ .TableOfContents }}
       </nav>
     </aside>
     {{ end }}
 
     <div class="col-lg order-lg-2 order-1">
-      <nav aria-label="breadcrumb" class="small text-uppercase mb-2">
+      <nav aria-label="breadcrumb" class="small fw-light mb-2" style="letter-spacing: 1.15px">
         <a class="link-secondary link-underline-opacity-0" href="{{ "/" | relURL }}">home</a>
         <span class="text-body-secondary mx-1">/</span>
         <a class="link-secondary link-underline-opacity-0" href="{{ .Parent.RelPermalink }}">{{ .Parent.Title | lower }}</a>
       </nav>
-      <h1 class="fs-1 fw-bold mb-2">{{ .Title }}</h1>
+      <h1 class="fs-1 fw-bold mb-3">{{ .Title }}</h1>
       <div class="d-flex gap-2 align-items-center flex-wrap mb-5 small text-body-secondary">
         <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
         {{ range .Params.tags }}
@@ -29,7 +29,6 @@
 
       {{ with .Params.tags }}
       <footer class="border-top pt-3 mt-4 d-flex gap-2 flex-wrap align-items-center">
-        <span class="small text-uppercase text-body-secondary me-1">Tagged</span>
         {{ range . }}
           <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">#{{ . }}</a>
         {{ end }}

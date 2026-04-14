@@ -27,3 +27,6 @@ markup:
   tableOfContents:
     startLevel: 2
     endLevel: 3
+  highlight:
+    style: lovelace
+    wrapperClass: border-start border-2 px-3
