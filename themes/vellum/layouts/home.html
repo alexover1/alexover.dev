@@ -1,11 +1,20 @@
 {{ define "main" }}
-  {{ with .Site.Params.intro }}
-    <div class="alert alert-primary rounded-0 py-3">{{ . }}</div>
-  {{ end }}
+  <section class="d-flex align-items-center gap-4 mt-4 mb-5 pb-4 border-bottom">
+    <img src="{{ "/images/profile.png" | relURL }}" alt="{{ .Site.Title }}" class="rounded-circle flex-shrink-0" width="96" height="96" style="object-fit: cover">
+    <div>
+      <h1 class="fs-3 fw-bold mb-1">Hi, I'm Alex.</h1>
+      {{ with .Site.Params.tagline }}
+        <p class="text-body-secondary small text-uppercase fw-light mb-2" style="letter-spacing: 1.15px">{{ . }}</p>
+      {{ end }}
+      {{ with .Site.Params.intro }}
+        <p class="mb-0">{{ . }}</p>
+      {{ end }}
+    </div>
+  </section>
 
   <div class="row g-4">
     <div class="col-lg-8">
-      <h2 class="text-uppercase text-body-secondary small fw-bold mb-3">Recent Posts</h2>
+      <h2 class="text-uppercase text-body-secondary small fw-light mb-3" style="letter-spacing: 1.15px">Recent Posts</h2>
       {{ $posts := where .Site.RegularPages "Section" "in" (slice "posts" "articles") }}
       {{ range $i, $p := $posts | first 5 }}
         {{ partial "post-preview.html" (dict "page" $p "featured" (eq $i 0)) }}
@@ -13,19 +22,17 @@
     </div>
 
     <div class="col-lg-4">
-      {{ with .Site.Params.now }}
-        <aside class="card bg-dark text-white sticky-lg-top" style="top: 1rem">
-          <div class="card-body">
-            <h3 class="text-uppercase text-white-50 small fw-bold mb-3">Currently</h3>
-            <dl class="mb-0">
-              <dt class="text-primary text-uppercase small fw-normal">Building</dt>
-              <dd class="mb-2">{{ .building }}</dd>
-              <dt class="text-primary text-uppercase small fw-normal">Reading</dt>
-              <dd class="mb-2">{{ .reading }}</dd>
-              <dt class="text-primary text-uppercase small fw-normal">Thinking About</dt>
-              <dd class="mb-2">{{ .thinking }}</dd>
-            </dl>
-          </div>
+      {{ with .Site.Taxonomies.tags }}
+        <aside class="sticky-lg-top" style="top: 1rem">
+          <h2 class="text-uppercase text-body-secondary small fw-light mb-3" style="letter-spacing: 1.15px">Tags</h2>
+          <ul class="list-group">
+            {{ range .ByCount | first 5 }}
+              <a href="{{ .Page.RelPermalink }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <span>#{{ .Page.Title }}</span>
+                <span class="badge text-bg-primary rounded-pill">{{ .Count }}</span>
+              </a>
+            {{ end }}
+          </ul>
         </aside>
       {{ end }}
     </div>

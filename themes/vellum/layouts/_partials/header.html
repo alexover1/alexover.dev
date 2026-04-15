@@ -2,7 +2,7 @@
   <div class="container">
     {{ if .IsHome }}
       <h1 class="brand display-5 mb-1"><a href="{{ "/" | relURL }}" class="text-white text-decoration-none">{{ .Site.Title }}</a></h1>
-      {{ with .Site.Params.tagline }}<p class="text-white-50 small mb-3">{{ . }}</p>{{ end }}
+      <!-- {{ with .Site.Params.tagline }}<p class="text-white-50 small mb-3">{{ . }}</p>{{ end }} -->
     {{ else }}
       <p class="brand fs-4 mb-2"><a href="{{ "/" | relURL }}" class="text-white text-decoration-none">{{ .Site.Title }}</a></p>
     {{ end }}
