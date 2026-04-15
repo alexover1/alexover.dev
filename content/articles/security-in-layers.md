@@ -1,5 +1,5 @@
 ---
-title: Layered Systems of Security
+title: Security in Layers
 summary: >
   Another attempt at explaining security principles as a non-cybersecurity
   expert - this time featuring "concentric rings of protection".
