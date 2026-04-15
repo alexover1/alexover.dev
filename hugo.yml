@@ -5,6 +5,7 @@ theme: vellum
 enableGitInfo: true
 
 params:
+  author: Alex Overstreet
   tagline: programmer · game designer · writer
   intro: Writing about design, security, games, and the questions underneath the code I ship.
   github: https://github.com/alexover1

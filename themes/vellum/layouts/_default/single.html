@@ -1,7 +1,7 @@
 {{ define "main" }}
   <div class="row gx-5">
     {{ if .TableOfContents }}
-      <aside class="col-lg-3 order-lg-1 order-2 mb-4">
+      <aside class="col-lg-3 order-lg-1 order-2 my-4">
         <nav class="sticky-lg-top small border-start border-2 py-1 px-3" style="top: 1rem">
           <p class="text-uppercase text-body-secondary small fw-light mb-3" style="letter-spacing: 1.15px">Contents</p>
           {{ .TableOfContents }}
@@ -10,15 +10,20 @@
     {{ end }}
 
     <div class="col-lg order-lg-2 order-1">
-      <div class="article-header">
-        <nav aria-label="breadcrumb" class="small fw-light mb-2" style="letter-spacing: 1.15px">
-          <a class="link-secondary link-underline-opacity-0" href="{{ "/" | relURL }}">home</a>
-          <span class="text-body-tertiary mx-1">/</span>
-          <a class="link-secondary link-underline-opacity-0" href="{{ .Parent.RelPermalink }}">{{ .Parent.Title | lower }}</a>
-        </nav>
+      <div class="article-header border-bottom mt-4 mb-4 pb-3">
         <h1 class="fs-1 fw-bold mb-3">{{ .Title }}</h1>
-        <div class="d-flex gap-2 align-items-center flex-wrap mb-5 small text-body-secondary">
+        {{ with .Params.summary }}
+          <p class="fs-5 text-body-secondary mb-4">{{ . }}</p>
+        {{ end }}
+        {{ $siteAuthor := .Site.Params.author }}
+        {{ $author := or (and .GitInfo .GitInfo.AuthorName) $siteAuthor }}
+        {{ $avatar := cond (eq $author $siteAuthor) "/images/profile-alex.png" "/images/profile-user.svg" }}
+        <div class="d-flex gap-2 align-items-center flex-wrap small text-body-secondary">
+          <img src="{{ $avatar | relURL }}" alt="{{ $author }}" class="rounded-circle" width="28" height="28" style="object-fit: cover">
+          <span>By {{ $author }}</span>
+          <span class="text-body-tertiary">&middot;</span>
           <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+          <span class="text-body-tertiary">&middot;</span>
           {{ range .Params.tags }}
           <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">#{{ . }}</a>
           {{ end }}
