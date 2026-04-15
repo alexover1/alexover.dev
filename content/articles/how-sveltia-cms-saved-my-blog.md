@@ -1,11 +1,15 @@
 ---
 title: How Sveltia CMS Saved My Blog
-date: 2026-01-27
-draft: true
+summary: >
+  How I chose a tech stack in 2026, and introduce the idea of a content
+  management system.
 tags: [homelab, web development, software architecture]
+date: 2026-01-27
+draft: false
 ---
 
-_Disclaimer: I am not being paid to write this. This post is my own opinion._
+*Disclaimer: Even though I am specifically talking about Sveltia CMS in this
+article, I am not associated with them in any way.*
 
 With that out of the way, hi! Welcome to my blog.
 

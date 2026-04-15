@@ -1,8 +1,11 @@
 ---
 title: Recreating Heroes of Sokoban
-date: 2025-09-02
-draft: true
+summary: >
+  My experience with "tiny games" - how I recreated Heroes of Sokoban using the
+  Pico-8 console.
 tags: [puzzle games, retro computing, game development]
+date: 2025-09-02
+draft: false
 ---
 
 ![screenshot](screenshot-1.png "A screenshot of my version of the game.")

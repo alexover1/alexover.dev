@@ -1,8 +1,11 @@
 ---
 title: Web Content Creation Is Missing Something
+summary: >
+  Expanding the idea of a content management system, what it means to render,
+  and how slapping a theme on some text is not enough.
+tags: [web development, graphic design, rendering]
 date: 2026-04-14T13:12:20-05:00
-draft: true
-tags: [web development]
+draft: false
 ---
 
 We all remember my famous article[^1] on content management systems, right?

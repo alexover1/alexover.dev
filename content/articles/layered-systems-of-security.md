@@ -1,8 +1,11 @@
 ---
 title: Layered Systems of Security
-date: 2026-04-04
-draft: true
+summary: >
+  Another attempt at explaining security principles as a non-cybersecurity
+  expert - this time featuring "concentric rings of protection".
 tags: [security, privacy, philosophy]
+date: 2026-04-04
+draft: false
 ---
 
 Last time, I explained my mostly-a-joke security principle: [The Refrigerator
