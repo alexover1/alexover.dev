@@ -17,7 +17,7 @@
         {{ end }}
         {{ $siteAuthor := .Site.Params.author }}
         {{ $author := or (and .GitInfo .GitInfo.AuthorName) $siteAuthor }}
-        {{ $avatar := cond (eq $author $siteAuthor) "/images/profile-alex.png" "/images/profile-user.svg" }}
+        {{ $avatar := cond (eq $author $siteAuthor) .Site.Params.avatar .Site.Params.defaultAvatar }}
         <div class="d-flex gap-2 align-items-center flex-wrap small text-body-secondary">
           <img src="{{ $avatar | relURL }}" alt="{{ $author }}" class="rounded-circle" width="28" height="28" style="object-fit: cover">
           <span>By {{ $author }}</span>

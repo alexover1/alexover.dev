@@ -1,6 +1,6 @@
 {{ define "main" }}
   <section class="d-flex align-items-center gap-4 mt-4 mb-5 pb-4 border-bottom">
-    <img src="{{ "/images/profile.png" | relURL }}" alt="{{ .Site.Title }}" class="rounded-circle flex-shrink-0" width="96" height="96" style="object-fit: cover">
+    <img src="{{ .Site.Params.avatar | relURL }}" alt="{{ .Site.Title }}" class="rounded-circle flex-shrink-0" width="96" height="96" style="object-fit: cover">
     <div>
       <h1 class="fs-3 fw-bold mb-1">Hi, I'm Alex.</h1>
       {{ with .Site.Params.tagline }}
