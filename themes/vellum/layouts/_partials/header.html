@@ -1,15 +1,21 @@
-<header class="bg-dark text-white py-4 mb-4">
+<header class="bg-dark text-white {{ if .IsHome }}py-4{{ else }}py-2{{ end }} mb-4">
   <div class="container">
     {{ if .IsHome }}
       <h1 class="brand display-5 mb-1"><a href="{{ "/" | relURL }}" class="text-white text-decoration-none">{{ .Site.Title }}</a></h1>
-      <!-- {{ with .Site.Params.tagline }}<p class="text-white-50 small mb-3">{{ . }}</p>{{ end }} -->
+      <nav class="nav small">
+        {{ range .Site.Menus.main }}
+          <a class="nav-link text-white-50 px-2 py-1" href="{{ .URL | relURL }}">{{ .Name }}</a>
+        {{ end }}
+      </nav>
     {{ else }}
-      <p class="brand fs-4 mb-2"><a href="{{ "/" | relURL }}" class="text-white text-decoration-none">{{ .Site.Title }}</a></p>
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <p class="brand fs-4 mb-0"><a href="{{ "/" | relURL }}" class="text-white text-decoration-none">{{ .Site.Title }}</a></p>
+        <nav class="nav small">
+          {{ range .Site.Menus.main }}
+            <a class="nav-link text-white-50 px-2 py-1" href="{{ .URL | relURL }}">{{ .Name }}</a>
+          {{ end }}
+        </nav>
+      </div>
     {{ end }}
-    <nav class="nav small">
-      {{ range .Site.Menus.main }}
-        <a class="nav-link text-white-50 px-2 py-1" href="{{ .URL | relURL }}">{{ .Name }}</a>
-      {{ end }}
-    </nav>
   </div>
 </header>
