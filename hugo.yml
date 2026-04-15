@@ -1,8 +1,7 @@
-baseUrl: https://alexover.dev
+baseUrl: /
 locale: en-us
 title: alexover.dev
 theme: vellum
-enableGitInfo: true
 
 params:
   author: Alex Overstreet
@@ -31,3 +30,6 @@ markup:
   highlight:
     style: lovelace
     wrapperClass: border-start border-2 px-3
+
+enableGitInfo: true
+
