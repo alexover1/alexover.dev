@@ -1,6 +1,6 @@
 ---
 title: How Sveltia CMS Saved My Blog
-date: 2026-04-14T13:28:56-05:00
+date: 2026-01-27
 draft: true
 tags: [homelab, web development, software architecture]
 ---

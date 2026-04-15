@@ -87,7 +87,7 @@ through _all sorts of hassle_ to deal with your publisher, create a new edition
 of the work, reprint thousands of copies[^2], _et cetera_. While in the web,
 you just edit some stylesheets and hit deploy.
 
-## Wrapping up
+## Wrapping Up
 
 So that's where I've landed for now. The "content management system" is really
 only half of the problem. It's responsible for allowing you to organize and

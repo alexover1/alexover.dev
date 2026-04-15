@@ -10,9 +10,9 @@
     {{ end }}
 
     <div class="col-lg order-lg-2 order-1">
-      <nav aria-label="breadcrumb" class="small fw-light mb-2" style="letter-spacing: 1.15px">
+      <nav aria-label="breadcrumb" class="small mb-2" style="letter-spacing: 1.15px">
         <a class="link-secondary link-underline-opacity-0" href="{{ "/" | relURL }}">home</a>
-        <span class="text-body-secondary mx-1">/</span>
+        <span class="text-body-tertiary mx-1">/</span>
         <a class="link-secondary link-underline-opacity-0" href="{{ .Parent.RelPermalink }}">{{ .Parent.Title | lower }}</a>
       </nav>
       <h1 class="fs-1 fw-bold mb-3">{{ .Title }}</h1>

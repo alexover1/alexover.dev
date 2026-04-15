@@ -1,6 +1,6 @@
 ---
 title: Layered Systems of Security
-date: 2026-04-13T23:28:05-05:00
+date: 2026-04-04
 draft: true
 tags: [security, privacy, philosophy]
 ---
