@@ -1,7 +1,7 @@
 ---
 title: The Refrigerator Policy
 summary: >
-  The (controversial!) idea that you probably don't need a lock on your
+  The (controversial) idea that you probably don't need a lock on your
   refrigerator.
 tags: [security, privacy, philosophy]
 date: 2026-02-22
