@@ -23,9 +23,11 @@
           <span>By {{ $author }}</span>
           <span class="text-body-tertiary">&middot;</span>
           <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-          <span class="text-body-tertiary">&middot;</span>
-          {{ range .Params.tags }}
-          <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">#{{ . }}</a>
+          {{ with .Params.tags }}
+            <span class="text-body-tertiary">&middot;</span>
+            {{ range . }}
+              <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">#{{ . }}</a>
+            {{ end }}
           {{ end }}
         </div>
       </div>
