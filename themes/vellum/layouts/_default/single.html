@@ -1,7 +1,7 @@
 {{ define "main" }}
   <div class="row gx-5">
     {{ if .TableOfContents }}
-      <aside class="col-lg-3 order-lg-1 order-2 my-4">
+      <aside class="col-lg-3 d-none d-lg-block my-4">
         <nav class="sticky-lg-top small border-start border-2 py-1 px-3" style="top: 1rem">
           <p class="text-uppercase text-body-secondary small fw-light mb-3" style="letter-spacing: 1.15px">Contents</p>
           {{ .TableOfContents }}
