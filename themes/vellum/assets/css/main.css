@@ -77,15 +77,19 @@
 .verse-ref:visited,
 .verse-ref:active {
   color: inherit;
-  text-decoration: underline dashed currentColor;
-  text-underline-offset: 0.25em;
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--bs-dark-rgb), 0.25);
+  text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
   cursor: pointer;
+  transition: text-decoration-color 0.15s, text-decoration-thickness 0.15s;
 }
 
 .verse-ref:hover,
 .verse-ref:focus-visible {
-  color: var(--bs-primary);
+  color: inherit;
+  text-decoration-color: rgba(var(--bs-dark-rgb), 0.7);
+  text-decoration-thickness: 2px;
 }
 
 .verse-ref:focus {
