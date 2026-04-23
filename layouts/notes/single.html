@@ -14,10 +14,10 @@
           <span>By {{ $author }}</span>
           <span class="text-body-tertiary">&middot;</span>
           <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-          {{ with .Params.tags }}
+          {{ with .Params.categories }}
             <span class="text-body-tertiary">&middot;</span>
             {{ range . }}
-              <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">#{{ . }}</a>
+              <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
             {{ end }}
           {{ end }}
         </div>
@@ -27,10 +27,10 @@
         {{ .Content }}
       </article>
 
-      {{ with .Params.tags }}
+      {{ with .Params.categories }}
         <footer class="border-top pt-3 mt-4 d-flex gap-2 flex-wrap align-items-center">
           {{ range . }}
-            <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">#{{ . }}</a>
+            <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
           {{ end }}
         </footer>
       {{ end }}

@@ -1,0 +1,48 @@
+{{ define "main" }}
+  {{ $pages := .Pages }}
+
+  {{ if $pages }}
+    <header class="mb-5 pb-3 border-bottom">
+      <h1 class="fs-2 fw-bold mb-2">{{ .Title }}</h1>
+      {{ with .Content }}<div class="text-body-secondary">{{ . }}</div>{{ end }}
+    </header>
+
+    {{ range $term, $taxonomy := .Site.Taxonomies.categories }}
+      {{ $items := where $taxonomy.Pages "Section" "notes" }}
+      {{ with $items }}
+        <section class="mb-5">
+          <div class="d-flex align-items-baseline gap-2 mb-3">
+            <h2 class="fs-4 fw-bold mb-0 text-capitalize">{{ $term }}</h2>
+            <span class="text-body-tertiary small">{{ len . }}</span>
+          </div>
+          <div class="row g-3">
+            {{ range . }}
+              <div class="col-md-6">
+                {{ partial "post-preview.html" (dict "page" .) }}
+              </div>
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+    {{ end }}
+
+    {{ $uncategorized := where $pages "Params.categories" nil }}
+    {{ with $uncategorized }}
+      <section class="mb-5">
+        <div class="d-flex align-items-baseline gap-2 mb-3">
+          <h2 class="fs-4 fw-bold mb-0">Uncategorized</h2>
+          <span class="text-body-tertiary small">{{ len . }}</span>
+        </div>
+        <div class="row g-3">
+          {{ range . }}
+            <div class="col-md-6">
+              {{ partial "post-preview.html" (dict "page" .) }}
+            </div>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+  {{ else }}
+    {{ partial "empty.html" (dict "page" .) }}
+  {{ end }}
+{{ end }}
