@@ -1,0 +1,39 @@
+{{ define "main" }}
+  <div class="row gx-5">
+    <div class="col-lg-8 mx-auto">
+      <div class="article-header border-bottom mt-4 mb-4 pb-3">
+        <h1 class="fs-1 fw-bold mb-3">{{ .Title }}</h1>
+        {{ with .Params.summary }}
+          <p class="fs-5 text-body-secondary mb-4">{{ . }}</p>
+        {{ end }}
+        {{ $siteAuthor := .Site.Params.author }}
+        {{ $author := or (and .GitInfo .GitInfo.AuthorName) $siteAuthor }}
+        {{ $avatar := cond (eq $author $siteAuthor) .Site.Params.avatar .Site.Params.defaultAvatar }}
+        <div class="d-flex gap-2 align-items-center flex-wrap small text-body-secondary">
+          <img src="{{ $avatar | relURL }}" alt="{{ $author }}" class="rounded-circle" width="28" height="28" style="object-fit: cover">
+          <span>By {{ $author }}</span>
+          <span class="text-body-tertiary">&middot;</span>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+          {{ with .Params.tags }}
+            <span class="text-body-tertiary">&middot;</span>
+            {{ range . }}
+              <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">#{{ . }}</a>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <article class="article-body">
+        {{ .Content }}
+      </article>
+
+      {{ with .Params.tags }}
+        <footer class="border-top pt-3 mt-4 d-flex gap-2 flex-wrap align-items-center">
+          {{ range . }}
+            <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">#{{ . }}</a>
+          {{ end }}
+        </footer>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}
