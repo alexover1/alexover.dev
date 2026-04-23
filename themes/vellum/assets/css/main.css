@@ -73,15 +73,21 @@
   }
 }
 
-.verse {
-  cursor: help;
+.verse-ref,
+.verse-ref:visited,
+.verse-ref:active {
+  color: inherit;
+  text-decoration: underline dashed currentColor;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+  cursor: pointer;
 }
 
-.verse:hover::after {
-  content: attr(title);
-  background-color: var(--bs-primary);
-  padding: 15px;
-  border-radius: 5px;
-  position: absolute;
-  font-size: var(--bs-body-font-size);
+.verse-ref:hover,
+.verse-ref:focus-visible {
+  color: var(--bs-primary);
+}
+
+.verse-ref:focus {
+  outline: none;
 }

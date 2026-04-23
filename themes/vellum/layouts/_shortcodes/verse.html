@@ -1,47 +1,27 @@
 {{ $ref := .Get 0 }}
 {{ $apiKey := getenv "HUGO_ESV_API_KEY" }}
-{{ $encoded := $ref | urlquery }}
-{{ $url := printf "https://api.esv.org/v3/passage/text/?q=%s&include-passage-references=false&include-verse-numbers=false&include-headings=false&include-footnotes=false&include-short-copyright=false" $encoded }}
-
-{{ $text := "" }}
 {{ $canonical := $ref }}
+{{ $text := "" }}
 
 {{ with $apiKey }}
+  {{ $url := printf "https://api.esv.org/v3/passage/text/?q=%s&include-passage-references=false&include-verse-numbers=false&include-headings=false&include-footnotes=false&include-short-copyright=false" ($ref | urlquery) }}
   {{ $opts := dict "headers" (dict "Authorization" (printf "Token %s" .)) }}
   {{ with try (resources.GetRemote $url $opts) }}
     {{ with .Err }}
       {{ warnf "ESV API error for %q: %s" $ref . }}
-    {{ else with .Value }}
-      {{ $json := .Content | transform.Unmarshal }}
-      {{ $passages := index $json "passages" }}
-      {{ if and $passages (gt (len $passages) 0) }}
-        {{ $text = index $passages 0 | strings.TrimSpace }}
-      {{ end }}
-      {{ with index $json "canonical" }}
-        {{ $canonical = . }}
-      {{ end }}
+    {{ else with (.Value.Content | transform.Unmarshal) }}
+      {{ $canonical = .canonical | default $ref }}
+      {{ with index .passages 0 }}{{ $text = . | strings.TrimSpace }}{{ end }}
     {{ end }}
   {{ end }}
 {{ else }}
   {{ warnf "HUGO_ESV_API_KEY not set; verse %q will render as link only" $ref }}
 {{ end }}
 
-{{ $extLink := printf "https://www.esv.org/%s" ($ref | urlquery) }}
-
 {{ if $text }}
-<span
-  class="popover-heading"
-  tabindex="0"
-  role="button"
-  style="cursor: pointer; user-select: none;"
-  data-bs-toggle="popover"
-  data-bs-trigger="click"
-  data-bs-placement="bottom"
-  data-bs-title="{{ $canonical }} (ESV)"
-  data-bs-content="{{ $text }}"
->
-  {{ $canonical }}
-</span>
+  <span class="verse-ref" tabindex="0" role="button"
+    data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="bottom"
+    data-bs-title="{{ $canonical }} (ESV)" data-bs-content="{{ $text }}">{{ $canonical }}</span>
 {{ else }}
-  <a href="{{ $extLink }}" target="_blank" rel="noopener">{{ $canonical }}</a>
+  <a class="verse-ref" href="https://www.esv.org/{{ $ref | urlquery }}" target="_blank" rel="noopener">{{ $canonical }}</a>
 {{ end }}
