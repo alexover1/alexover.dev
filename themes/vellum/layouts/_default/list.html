@@ -1,11 +1,15 @@
 {{ define "main" }}
-  <h1 class="fs-2 mb-4">{{ .Title }}</h1>
-  {{ with .Content }}<div class="mb-4">{{ . }}</div>{{ end }}
-
   {{ $pages := .Pages }}
   {{ if eq .Kind "taxonomy" }}{{ $pages = .Pages }}{{ end }}
 
-  {{ range $pages }}
-    {{ partial "post-preview.html" (dict "page" .) }}
+  {{ if $pages }}
+    <h1 class="fs-2 mb-4">{{ .Title }}</h1>
+    {{ with .Content }}<div class="mb-4">{{ . }}</div>{{ end }}
+
+    {{ range $pages }}
+      {{ partial "post-preview.html" (dict "page" .) }}
+    {{ end }}
+  {{ else }}
+    {{ partial "empty.html" (dict "page" .) }}
   {{ end }}
 {{ end }}
