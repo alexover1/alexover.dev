@@ -1,13 +1,32 @@
 {{ define "main" }}
+  {{ $hasToc := .Fragments.Headings }}
+  {{ $related := .Site.RegularPages.Related . | first 3 }}
+  {{ if not $related }}
+    {{ $related = where .Site.RegularPages "Section" .Section | symdiff (slice .) | first 3 }}
+  {{ end }}
   <div class="row gx-5">
-    {{ if .TableOfContents }}
-      <aside class="col-lg-3 d-none d-lg-block my-4">
-        <nav class="sticky-lg-top small border-start border-2 py-1 px-3" style="top: 1rem">
-          <p class="text-uppercase text-body-secondary small fw-light mb-3" style="letter-spacing: 1.15px">Contents</p>
-          {{ .TableOfContents }}
-        </nav>
-      </aside>
-    {{ end }}
+    <aside class="col-lg-3 d-none d-lg-block my-4">
+      <div class="sticky-lg-top" style="top: 1rem">
+        {{ if $hasToc }}
+          <nav class="small border-start border-2 py-1 px-3 mb-4">
+            <p class="text-uppercase text-body-secondary small fw-light mb-3" style="letter-spacing: 1.15px">Contents</p>
+            {{ .TableOfContents }}
+          </nav>
+        {{ end }}
+        {{ with $related }}
+          <nav class="small border-start border-2 py-1 px-3">
+            <p class="text-uppercase text-body-secondary small fw-light mb-3" style="letter-spacing: 1.15px">Related</p>
+            <ul class="list-unstyled mb-0">
+              {{ range . }}
+                <li class="mb-2">
+                  <a href="{{ .RelPermalink }}" class="text-body text-decoration-none d-block" style="line-height: 1.35">{{ .Title }}</a>
+                </li>
+              {{ end }}
+            </ul>
+          </nav>
+        {{ end }}
+      </div>
+    </aside>
 
     <div class="col-lg order-lg-2 order-1">
       <div class="article-header border-bottom mt-4 mb-4 pb-3">
