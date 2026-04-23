@@ -8,7 +8,7 @@ params:
   avatar: /images/profile-alex.png
   defaultAvatar: /images/profile-user.svg
   tagline: programmer · game designer · writer
-  intro: Writing about design, security, games, and the questions underneath the code I ship.
+  intro: Writing about design, security, games, and the occasional tangent.
   github: https://github.com/alexover1
   now:
     building: a puzzle game in C
