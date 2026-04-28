@@ -4,7 +4,7 @@ categories:
   - faith
 tags: []
 date: 2026-04-28T17:20:34-05:00
-draft: true
+draft: false
 ---
 
 > <sup>22</sup>let us draw near to God with a sincere heart and with the full assurance that
