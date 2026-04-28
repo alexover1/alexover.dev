@@ -5,6 +5,7 @@ categories:
 tags: []
 date: 2026-04-28T17:20:34-05:00
 draft: false
+summary: A reflection on Hebrews 10:22-25 — holding unswervingly to our hope in Christ and the necessity of being deeply rooted in biblical community.
 ---
 
 > <sup>22</sup>let us draw near to God with a sincere heart and with the full assurance that
