@@ -21,9 +21,16 @@
 } 
 
 .article-body,
-.article-header {
+.article-header,
+.article-footer {
   font-size: 1.08rem;
   max-width: 42em;
+}
+
+.article-body hr {
+  border-top: var(--bs-border-width) solid var(--bs-border-color);
+  opacity: 1;
+  margin: 2rem 0;
 }
 
 .article-body {

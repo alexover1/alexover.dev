@@ -28,7 +28,7 @@
       </article>
 
       {{ with .Params.categories }}
-        <footer class="border-top pt-3 mt-4 d-flex gap-2 flex-wrap align-items-center">
+        <footer class="article-footer border-top pt-3 mt-4 d-flex gap-2 flex-wrap align-items-center">
           {{ range . }}
             <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
           {{ end }}
