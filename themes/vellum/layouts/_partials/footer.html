@@ -1,11 +1,11 @@
 <footer class="bg-dark text-white-50 mt-auto small">
   <div class="container d-flex justify-content-between flex-wrap gap-2 py-3 position-relative">
     <span>&copy; {{ now.Year }} {{ .Site.Title }}</span>
-    <span class="position-absolute start-50 translate-middle-x">&gt;&lt;&gt;</span>
+    <a class="link-light link-opacity-50 link-opacity-100-hover link-underline-opacity-0 position-absolute start-50 translate-middle-x" href="{{ "/about/" | relURL }}" aria-label="About">&gt;&lt;&gt;</a>
     <span>
-      {{ with .Site.Params.github }}<a class="link-light link-underline-opacity-0" href="{{ . }}">github</a>{{ end }}
+      {{ with .Site.Params.github }}<a class="link-light link-opacity-50 link-opacity-100-hover link-underline-opacity-0" href="{{ . }}">github</a>{{ end }}
       ·
-      <a class="link-light link-underline-opacity-0" href="{{ "/index.xml" | relURL }}">rss</a>
+      <a class="link-light link-opacity-50 link-opacity-100-hover link-underline-opacity-0" href="{{ "/index.xml" | relURL }}">rss</a>
     </span>
   </div>
 </footer>

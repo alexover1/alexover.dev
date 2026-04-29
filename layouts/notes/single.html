@@ -1,7 +1,7 @@
 {{ define "main" }}
   <div class="row gx-5">
     <div class="col-lg-8 mx-auto">
-      <div class="article-header border-bottom mt-4 mb-4 pb-3">
+      <div class="article-header mx-auto border-bottom mt-4 mb-4 pb-3">
         <h1 class="fs-1 fw-bold mb-3">{{ .Title }}</h1>
         {{ with .Params.summary }}
           <p class="fs-5 text-body-secondary mb-4">{{ . }}</p>
@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <article class="article-body">
+      <article class="article-body mx-auto">
         {{ .Content }}
       </article>
 
@@ -33,7 +33,7 @@
         {{ $related = first 2 (where .Site.RegularPages "Section" "notes" | symdiff (slice .)) }}
       {{ end }}
       {{ if or $categories $related }}
-        <footer class="article-footer border-top pt-4 mt-5">
+        <footer class="article-footer mx-auto border-top pt-4 mt-5">
           {{ with $related }}
             <p class="text-uppercase text-body-secondary small fw-light mb-3" style="letter-spacing: 1.15px">Read More</p>
             <div class="row row-cols-1 row-cols-md-2 g-3">

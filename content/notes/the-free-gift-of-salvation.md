@@ -5,7 +5,6 @@ categories:
 tags: []
 date: 2026-04-15T23:03:50-05:00
 draft: false
-
 ---
 
 Scripture references on how salvation is given to us as a free gift by the grace of God through Jesus.
