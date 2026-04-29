@@ -36,3 +36,12 @@ markup:
     style: tango
 
 enableGitInfo: true
+
+related:
+  includeNewer: true
+  threshold: 60
+  toLower: true
+  indices:
+    - { name: categories, weight: 100 }
+    - { name: tags, weight: 80 }
+    - { name: date, weight: 10 }
