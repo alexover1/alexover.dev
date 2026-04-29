@@ -80,12 +80,15 @@
   }
 }
 
-.related-card {
+.related-card,
+.post-card {
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
 .related-card:hover,
-.related-card:focus-within {
+.related-card:focus-within,
+.post-card:hover,
+.post-card:focus-within {
   border-color: var(--bs-primary) !important;
   transform: translateY(-2px);
 }

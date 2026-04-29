@@ -4,7 +4,11 @@ summary: >
   Bible study questions and discussion guide on the topic of sin.
 categories:
   - faith
-tags: []
+tags:
+  - sin
+  - gospel
+  - sanctification
+  - bible-study
 date: 2026-04-28T23:43:38-05:00
 draft: true
 ---

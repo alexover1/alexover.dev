@@ -5,7 +5,10 @@ summary: >
   and how community is crucial to spiritual growth.
 categories:
   - faith
-tags: []
+tags:
+  - hebrews
+  - community
+  - endurance
 date: 2026-04-28T17:20:34-05:00
 draft: false
 ---

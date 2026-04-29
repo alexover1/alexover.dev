@@ -2,24 +2,49 @@
   {{ $pages := .Pages }}
 
   {{ if $pages }}
-    <header class="mb-5 pb-3 border-bottom">
-      <h1 class="fs-2 fw-bold mb-2">{{ .Title }}</h1>
-      {{ with .Content }}<div class="text-body-secondary">{{ . }}</div>{{ end }}
-    </header>
+    <h1 class="fs-2 mb-4">{{ .Title }}</h1>
+    {{ with .Content }}<div class="mb-4">{{ . }}</div>{{ end }}
 
     {{ range $term, $taxonomy := .Site.Taxonomies.categories }}
       {{ $items := where $taxonomy.Pages "Section" "notes" }}
       {{ with $items }}
-        <section class="mb-5">
-          <div class="d-flex align-items-baseline gap-2 mb-3">
-            <h2 class="fs-4 fw-bold mb-0 text-capitalize">{{ $term }}</h2>
-            <span class="text-body-tertiary small">{{ len . }}</span>
-          </div>
-          <div class="row g-3">
-            {{ range . }}
-              <div class="col-md-6">
-                {{ partial "post-preview.html" (dict "page" .) }}
-              </div>
+        {{ $sorted := .ByDate.Reverse }}
+        {{ $latest := index $sorted 0 }}
+        {{ $catPage := site.GetPage (printf "/categories/%s" $term) }}
+        {{ $tags := slice }}
+        {{ range $sorted }}
+          {{ range .Params.tags }}
+            {{ $tags = $tags | append . }}
+          {{ end }}
+        {{ end }}
+        {{ $uniqTags := $tags | uniq }}
+        <section class="row gx-4 gx-lg-5 mb-5">
+          <aside class="col-lg-3 mb-4 mb-lg-0">
+            <div class="sticky-lg-top" style="top: 1rem">
+              <h2 class="fs-4 fw-normal text-capitalize mb-2">
+                <a href="{{ "/categories/" | relURL }}{{ $term | urlize }}/" class="link-body-emphasis link-opacity-100-hover link-underline-primary link-underline-opacity-0 link-underline-opacity-50-hover link-offset-2">{{ $term }}</a>
+              </h2>
+              <p class="text-body-tertiary small mb-3">
+                {{ len . }} note{{ if ne (len .) 1 }}s{{ end }} &middot; updated <time datetime="{{ $latest.Date.Format "2006-01-02" }}">{{ $latest.Date.Format "Jan 2" }}</time>
+              </p>
+              {{ with $catPage }}
+                {{ with .Params.summary }}
+                  <p class="text-body-secondary mb-4">{{ . }}</p>
+                {{ end }}
+              {{ end }}
+              {{ with $uniqTags }}
+                <p class="text-uppercase text-body-secondary small fw-light mb-2" style="letter-spacing: 1.15px">Tags</p>
+                <div class="d-flex flex-wrap gap-1">
+                  {{ range . }}
+                    <a class="badge rounded-pill text-bg-light text-decoration-none" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">#{{ . }}</a>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          </aside>
+          <div class="col-lg-9">
+            {{ range $sorted }}
+              {{ partial "post-preview.html" (dict "page" .) }}
             {{ end }}
           </div>
         </section>
@@ -28,16 +53,20 @@
 
     {{ $uncategorized := where $pages "Params.categories" nil }}
     {{ with $uncategorized }}
-      <section class="mb-5">
-        <div class="d-flex align-items-baseline gap-2 mb-3">
-          <h2 class="fs-4 fw-bold mb-0">Uncategorized</h2>
-          <span class="text-body-tertiary small">{{ len . }}</span>
-        </div>
-        <div class="row g-3">
-          {{ range . }}
-            <div class="col-md-6">
-              {{ partial "post-preview.html" (dict "page" .) }}
-            </div>
+      {{ $sorted := .ByDate.Reverse }}
+      {{ $latest := index $sorted 0 }}
+      <section class="row gx-4 gx-lg-5 mb-5">
+        <aside class="col-lg-3 mb-4 mb-lg-0">
+          <div class="sticky-lg-top" style="top: 1rem">
+            <h2 class="fs-4 fw-normal mb-2">Uncategorized</h2>
+            <p class="text-body-tertiary small mb-0">
+              {{ len . }} note{{ if ne (len .) 1 }}s{{ end }} &middot; updated <time datetime="{{ $latest.Date.Format "2006-01-02" }}">{{ $latest.Date.Format "Jan 2" }}</time>
+            </p>
+          </div>
+        </aside>
+        <div class="col-lg-9">
+          {{ range $sorted }}
+            {{ partial "post-preview.html" (dict "page" .) }}
           {{ end }}
         </div>
       </section>

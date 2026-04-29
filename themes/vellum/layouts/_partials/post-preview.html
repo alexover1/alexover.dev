@@ -1,6 +1,6 @@
 {{ $featured := .featured | default false }}
 {{ $page := .page }}
-<article class="card mb-3 border-0 border-start border-4 {{ if $featured }}bg-dark text-white border-primary{{ else }}border-primary-subtle bg-body-tertiary{{ end }}">
+<article class="post-card card mb-3 border-0 border-start border-4 {{ if $featured }}bg-dark text-white border-primary{{ else }}border-primary-subtle bg-body-tertiary{{ end }}">
   <div class="card-body">
     <div class="d-flex align-items-center gap-2 flex-wrap mb-1 small {{ if $featured }}text-white-50{{ else }}text-body-secondary{{ end }}">
       <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "Jan 2, 2006" }}</time>

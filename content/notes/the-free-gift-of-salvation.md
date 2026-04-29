@@ -2,7 +2,10 @@
 title: The Free Gift of Salvation
 categories:
   - faith
-tags: []
+tags:
+  - salvation
+  - grace
+  - gospel
 date: 2026-04-15T23:03:50-05:00
 draft: false
 ---
