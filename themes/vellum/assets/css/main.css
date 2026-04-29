@@ -78,6 +78,10 @@
     margin-bottom: 0.5rem;
     line-height: 1.35;
   }
+
+  li a.active {
+    color: var(--bs-primary);
+  }
 }
 
 .related-card,

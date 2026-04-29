@@ -22,6 +22,32 @@
         popover.hide()
       })
     })
+
+    const toc = document.getElementById('TableOfContents')
+    if (toc) {
+      const links = [...toc.querySelectorAll('a[href^="#"]')]
+      const targets = links
+        .map(a => ({ link: a, el: document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))) }))
+        .filter(t => t.el)
+      const offset = () => window.innerHeight * 0.2
+      const update = () => {
+        let active = null
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
+        if (atBottom && targets.length) {
+          active = targets[targets.length - 1]
+        } else {
+          for (const t of targets) {
+            if (t.el.getBoundingClientRect().top - offset() <= 0) active = t
+            else break
+          }
+          if (!active && targets.length) active = targets[0]
+        }
+        for (const t of targets) t.link.classList.toggle('active', t === active)
+      }
+      update()
+      window.addEventListener('scroll', update, { passive: true })
+      window.addEventListener('resize', update)
+    }
   </script>
 </body>
 </html>
