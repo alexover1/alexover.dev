@@ -59,13 +59,12 @@
 }
 
 header nav.nav .nav-link {
-  transition: color 0.15s ease, transform 0.15s ease;
+  transition: color 0.15s ease;
 }
 
 header nav.nav .nav-link:hover,
 header nav.nav .nav-link:focus-visible {
   color: #fff !important;
-  transform: translateY(-1px);
 }
 
 .article-body,
