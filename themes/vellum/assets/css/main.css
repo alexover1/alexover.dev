@@ -11,14 +11,62 @@
 }
 
 .brand a {
+  --mx: 50%;
+  --my: 50%;
+  --wave: 0%;
+  display: inline-block;
+  padding: 0.15em 0.25em;
+  margin: -0.15em -0.25em;
   font-family: var(--font-display);
   text-shadow: 0 2px 12px rgba(32, 156, 238, 0.35);
-  transition: color 0.2s;
+  background-image:
+    radial-gradient(circle at var(--mx) var(--my), rgba(220, 240, 255, 0.18), transparent 14%),
+    linear-gradient(90deg, #209CEE, #7ad9ff, #b6f0ff, #7ad9ff, #209CEE);
+  background-size: 100% 100%, 200% 100%;
+  background-position: 0 0, calc(var(--wave) + var(--mx) * -0.06) 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: #fff;
+  transition: -webkit-text-fill-color 0.5s ease, text-shadow 0.5s ease;
 }
 
-.brand a:hover {
-  color: var(--bs-primary-rgb);
-} 
+.brand a:hover,
+.brand a:focus-visible {
+  -webkit-text-fill-color: transparent;
+  animation: brand-wave 2.5s linear infinite;
+  text-shadow: 0 2px 18px rgba(32, 156, 238, 0.55);
+}
+
+@keyframes brand-wave {
+  from { --wave: 0%; }
+  to { --wave: 200%; }
+}
+
+@property --wave {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand a:hover,
+  .brand a:focus-visible {
+    animation: none;
+    color: #7ad9ff;
+    -webkit-text-fill-color: #7ad9ff;
+    background: none;
+  }
+}
+
+header nav.nav .nav-link {
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+header nav.nav .nav-link:hover,
+header nav.nav .nav-link:focus-visible {
+  color: #fff !important;
+  transform: translateY(-1px);
+}
 
 .article-body,
 .article-header,
