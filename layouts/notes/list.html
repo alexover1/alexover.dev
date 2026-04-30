@@ -2,8 +2,29 @@
   {{ $pages := .Pages }}
 
   {{ if $pages }}
-    <h1 class="fs-2 mb-4">{{ .Title }}</h1>
-    {{ with .Content }}<div class="mb-4">{{ . }}</div>{{ end }}
+    {{ $latestAll := index ($pages.ByDate.Reverse) 0 }}
+    {{ $cats := slice }}
+    {{ range $pages }}
+      {{ range .Params.categories }}
+        {{ $cats = $cats | append . }}
+      {{ end }}
+    {{ end }}
+    {{ $catCount := len ($cats | uniq) }}
+
+    <header class="border-bottom mt-4 mb-5 pb-3">
+      <h1 class="fs-2 fw-bold mb-2">{{ .Title }}</h1>
+      {{ with .Description }}
+        <p class="fs-5 text-body-secondary mb-3">{{ . }}</p>
+      {{ end }}
+      <p class="small text-body-tertiary mb-0">
+        {{ len $pages }} note{{ if ne (len $pages) 1 }}s{{ end }}
+        {{ if gt $catCount 0 }}
+          &middot; {{ $catCount }} categor{{ if eq $catCount 1 }}y{{ else }}ies{{ end }}
+        {{ end }}
+        &middot; updated <time datetime="{{ $latestAll.Date.Format "2006-01-02" }}">{{ $latestAll.Date.Format "Jan 2, 2006" }}</time>
+      </p>
+      {{ with .Content }}<div class="mt-3">{{ . }}</div>{{ end }}
+    </header>
 
     {{ range $term, $taxonomy := .Site.Taxonomies.categories }}
       {{ $items := where $taxonomy.Pages "Section" "notes" }}

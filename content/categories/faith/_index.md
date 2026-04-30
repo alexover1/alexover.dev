@@ -1,4 +1,5 @@
 ---
 title: Faith
-summary: Scripture I'm reading, questions I'm working through, and what I'm learning about following Christ.
+summary: >
+  Resources I've written and things I've thought about while following Christ.
 ---
