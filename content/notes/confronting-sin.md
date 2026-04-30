@@ -1,5 +1,5 @@
 ---
-title: Sin Bible Study
+title: Confronting Sin
 summary: >
   Bible study questions and discussion guide on the topic of sin.
 categories:
@@ -8,9 +8,9 @@ tags:
   - sin
   - gospel
   - sanctification
-  - bible-study
-date: 2026-04-28T23:43:38-05:00
-draft: true
+  - bible study
+date: 2026-04-30T10:46:38-05:00
+draft: false
 ---
 
 These questions are intended to be used as a group Bible study or for individual
