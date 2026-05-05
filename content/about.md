@@ -3,6 +3,7 @@ title: About
 summary: A little about who I am and why I write here.
 type: page
 layout: about
+draft: true
 ---
 
 ## Hi, I'm Alex
