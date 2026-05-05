@@ -35,7 +35,7 @@
           <p class="fs-5 text-body-secondary mb-4">{{ . }}</p>
         {{ end }}
         {{ $siteAuthor := .Site.Params.author }}
-        {{ $author := or (and .GitInfo .GitInfo.AuthorName) $siteAuthor }}
+        {{ $author := .Params.author | default $siteAuthor }}
         {{ $avatar := cond (eq $author $siteAuthor) .Site.Params.avatar .Site.Params.defaultAvatar }}
         <div class="d-flex gap-2 align-items-center flex-wrap small text-body-secondary">
           <img src="{{ $avatar | relURL }}" alt="{{ $author }}" class="rounded-circle" width="28" height="28" style="object-fit: cover">
